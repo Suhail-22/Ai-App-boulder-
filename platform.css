@@ -1,0 +1,844 @@
+/* ====== AI Development Platform - Styles ====== */
+/* منصة التطوير بالذكاء الاصطناعي - التنسيقات */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4f46e5;
+    --primary-dark: #4338ca;
+    --secondary-color: #10b981;
+    --secondary-dark: #059669;
+    --dark-bg: #0f172a;
+    --dark-card: #1e293b;
+    --dark-border: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --success-color: #10b981;
+    --info-color: #3b82f6;
+    --terminal-bg: #1a1a1a;
+    --terminal-text: #00ff00;
+    --sidebar-width: 280px;
+    --right-panel-width: 350px;
+    --header-height: 60px;
+    --status-height: 30px;
+}
+
+body {
+    font-family: 'Segoe UI', 'Tajawal', system-ui, -apple-system, sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+    direction: rtl;
+}
+
+/* ====== الهيكل الرئيسي ====== */
+.platform-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* ====== الهيدر ====== */
+.platform-header {
+    height: var(--header-height);
+    background: var(--dark-card);
+    border-bottom: 1px solid var(--dark-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.logo h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.beta {
+    background: var(--primary-color);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.project-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.project-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.project-status {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: inherit;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--dark-border);
+    color: var(--text-secondary);
+}
+
+.btn-outline:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-success {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background: var(--secondary-dark);
+}
+
+/* ====== مساحة العمل الرئيسية ====== */
+.workspace {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ====== الشريط الجانبي الأيسر ====== */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--dark-card);
+    border-left: 1px solid var(--dark-border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sidebar-section {
+    padding: 1rem;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.sidebar-section h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* شجرة الملفات */
+.file-tree {
+    overflow-y: auto;
+    max-height: 300px;
+    margin-bottom: 1rem;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.file-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.file-item.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.file-item i {
+    font-size: 0.9rem;
+}
+
+.file-item i.fa-file-code {
+    color: #3b82f6;
+}
+
+.file-item i.fa-file-css {
+    color: #10b981;
+}
+
+.file-item i.fa-file-js {
+    color: #f59e0b;
+}
+
+.file-item i.fa-file-json {
+    color: #8b5cf6;
+}
+
+.file-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.file-action-btn {
+    flex: 1;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--dark-border);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.file-action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* اختيار AI */
+.ai-selector select {
+    width: 100%;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--dark-border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.ai-selector select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.ai-quick-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.ai-action-btn {
+    padding: 0.5rem;
+    background: rgba(79, 70, 229, 0.1);
+    border: 1px solid rgba(79, 70, 229, 0.3);
+    border-radius: 6px;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.ai-action-btn:hover {
+    background: rgba(79, 70, 229, 0.2);
+    transform: translateY(-2px);
+}
+
+/* ====== اللوحة الرئيسية (المحرر + Terminal) ====== */
+.main-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* تبويبات المحرر */
+.editor-tabs {
+    display: flex;
+    background: #252526;
+    border-bottom: 1px solid #3e3e3e;
+    overflow-x: auto;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #2d2d30;
+    color: #858585;
+    border-right: 1px solid #3e3e3e;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.tab:hover {
+    background: #3e3e3e;
+    color: #d4d4d4;
+}
+
+.tab.active {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.tab-close {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    opacity: 0.7;
+}
+
+.tab-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+/* حاوية المحرر */
+.editor-container {
+    flex: 1;
+    min-height: 300px;
+    background: #1e1e1e;
+}
+
+/* Terminal */
+.terminal-container {
+    height: 250px;
+    background: var(--terminal-bg);
+    border-top: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background: #252526;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-header i {
+    color: var(--terminal-text);
+    margin-left: 0.5rem;
+}
+
+.terminal-header span {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.terminal-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.term-btn {
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: all 0.2s;
+}
+
+.term-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+}
+
+.terminal {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.terminal-output {
+    margin-bottom: 0.5rem;
+}
+
+.terminal-line {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+.prompt {
+    color: var(--terminal-text);
+    margin-left: 0.5rem;
+}
+
+.command {
+    color: white;
+    margin-right: 0.5rem;
+}
+
+.output {
+    color: #94a3b8;
+    padding-right: 1.5rem;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    padding: 0.25rem;
+    outline: none;
+}
+
+.terminal-input::placeholder {
+    color: #666;
+}
+
+/* ====== اللوحة اليمنى (AI Chat + Preview) ====== */
+.right-panel {
+    width: var(--right-panel-width);
+    background: var(--dark-card);
+    border-right: 1px solid var(--dark-border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* محادثة AI */
+.ai-chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.ai-chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.ai-chat-header h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chat-action-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+}
+
+.chat-action-btn:hover {
+    color: var(--danger-color);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.ai-chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.ai-message, .user-message {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.ai-message {
+    align-items: flex-start;
+}
+
+.user-message {
+    align-items: flex-start;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ai-message .message-avatar {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.user-message .message-avatar {
+    background: var(--primary-color);
+    color: white;
+}
+
+.message-content {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem;
+    border-radius: 12px;
+    max-width: 85%;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.ai-message .message-content {
+    border-top-right-radius: 0;
+}
+
+.user-message .message-content {
+    border-top-left-radius: 0;
+    background: rgba(79, 70, 229, 0.1);
+}
+
+.message-content p {
+    margin-bottom: 0.5rem;
+}
+
+.message-content pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin: 0.5rem 0;
+    overflow-x: auto;
+    font-size: 0.85rem;
+}
+
+.message-content code {
+    font-family: 'Courier New', monospace;
+    color: var(--terminal-text);
+}
+
+.message-content .btn-small {
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.ai-chat-input {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-top: 1px solid var(--dark-border);
+}
+
+.ai-chat-input input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.ai-chat-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.ai-chat-input button {
+    width: 44px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.ai-chat-input button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* المعاينة الحية */
+.preview-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.preview-header h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.preview-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.preview-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--dark-border);
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.preview-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
+}
+
+.device-selector {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--dark-border);
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-family: inherit;
+}
+
+.device-selector:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.preview-frame-container {
+    flex: 1;
+    padding: 1rem;
+    background: white;
+}
+
+.preview-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== شريط الحالة ====== */
+.status-bar {
+    height: var(--status-height);
+    background: var(--dark-card);
+    border-top: 1px solid var(--dark-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.status-left, .status-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: default;
+}
+
+/* ====== التمرير ====== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dark-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* ====== التصميم المتجاوب ====== */
+@media (max-width: 1200px) {
+    :root {
+        --sidebar-width: 240px;
+        --right-panel-width: 300px;
+    }
+}
+
+@media (max-width: 992px) {
+    .workspace {
+        flex-direction: column;
+    }
+    
+    .sidebar, .right-panel {
+        width: 100% !important;
+        height: auto;
+        max-height: 300px;
+    }
+    
+    .sidebar {
+        border-left: none;
+        border-bottom: 1px solid var(--dark-border);
+    }
+    
+    .right-panel {
+        border-right: none;
+        border-top: 1px solid var(--dark-border);
+    }
+    
+    .preview-frame-container {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .platform-header {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .header-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .action-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+    
+    .terminal-container {
+        height: 200px;
+    }
+}

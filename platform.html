@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Dev Platform - منصة التطوير بالذكاء الاصطناعي</title>
+    <link rel="stylesheet" href="platform.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Monaco Editor -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/editor/editor.main.min.css">
+</head>
+<body>
+    <div class="platform-container">
+        
+        <!-- Header -->
+        <header class="platform-header">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <h1>AI Dev Studio</h1>
+                <span class="beta">Beta</span>
+            </div>
+            
+            <div class="header-controls">
+                <div class="project-info">
+                    <span class="project-name">مشروع جديد</span>
+                    <span class="project-status">
+                        <i class="fas fa-circle" style="color: #10b981;"></i>
+                        جاهز
+                    </span>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="new-project">
+                        <i class="fas fa-plus"></i> مشروع جديد
+                    </button>
+                    <button class="btn btn-primary" id="run-project">
+                        <i class="fas fa-play"></i> تشغيل
+                    </button>
+                    <button class="btn btn-success" id="deploy-project">
+                        <i class="fas fa-rocket"></i> نشر
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <div class="workspace">
+            
+            <!-- Left Sidebar - File Explorer -->
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-folder-open"></i> الملفات</h3>
+                    <div class="file-tree" id="file-tree">
+                        <!-- Dynamic file tree will be loaded here -->
+                    </div>
+                    <div class="file-actions">
+                        <button class="file-action-btn" id="new-file">
+                            <i class="fas fa-file"></i> ملف جديد
+                        </button>
+                        <button class="file-action-btn" id="new-folder">
+                            <i class="fas fa-folder-plus"></i> مجلد جديد
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-robot"></i> المساعد الذكي</h3>
+                    <div class="ai-selector">
+                        <select id="ai-model">
+                            <option value="gemini">Gemini Pro (سريع)</option>
+                            <option value="deepseek">DeepSeek Coder (برمجة)</option>
+                            <option value="qwen">Qwen 2.5 (عام)</option>
+                        </select>
+                    </div>
+                    <div class="ai-quick-actions">
+                        <button class="ai-action-btn" data-prompt="أنشئ صفحة HTML بسيطة">
+                            <i class="fas fa-code"></i> صفحة HTML
+                        </button>
+                        <button class="ai-action-btn" data-prompt="أنشئ ملف JavaScript">
+                            <i class="fab fa-js"></i> ملف JS
+                        </button>
+                        <button class="ai-action-btn" data-prompt="أنشئ ملف CSS">
+                            <i class="fab fa-css3"></i> ملف CSS
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center - Editor & Terminal -->
+            <div class="main-panel">
+                <!-- Editor Tabs -->
+                <div class="editor-tabs" id="editor-tabs">
+                    <div class="tab active" data-file="index.html">
+                        <i class="fab fa-html5"></i> index.html
+                        <button class="tab-close"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Monaco Editor Container -->
+                <div id="editor-container" class="editor-container"></div>
+                
+                <!-- Terminal -->
+                <div class="terminal-container">
+                    <div class="terminal-header">
+                        <i class="fas fa-terminal"></i>
+                        <span>Terminal</span>
+                        <div class="terminal-actions">
+                            <button class="term-btn" id="clear-terminal">
+                                <i class="fas fa-broom"></i> مسح
+                            </button>
+                            <button class="term-btn" id="run-terminal">
+                                <i class="fas fa-play"></i> تشغيل
+                            </button>
+                        </div>
+                    </div>
+                    <div class="terminal" id="terminal">
+                        <div class="terminal-output">
+                            <div class="terminal-line">
+                                <span class="prompt">$</span>
+                                <span class="command">node --version</span>
+                            </div>
+                            <div class="terminal-line output">v18.17.0</div>
+                            <div class="terminal-line">
+                                <span class="prompt">$</span>
+                                <span class="command">Welcome to AI Dev Platform!</span>
+                            </div>
+                        </div>
+                        <div class="terminal-input-line">
+                            <span class="prompt">$</span>
+                            <input type="text" class="terminal-input" id="terminal-input" 
+                                   placeholder="اكتب أمراً... (مثال: npm init)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - AI Chat & Preview -->
+            <div class="right-panel">
+                <!-- AI Chat -->
+                <div class="ai-chat-container">
+                    <div class="ai-chat-header">
+                        <h3><i class="fas fa-comments"></i> محادثة AI</h3>
+                        <button class="chat-action-btn" id="clear-chat">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="ai-chat-messages" id="ai-chat-messages">
+                        <div class="ai-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>مرحباً! أنا مساعدك الذكي للتطوير.</p>
+                                <p>اطلب مني إنشاء ملفات، كتابة كود، أو إصلاح أخطاء.</p>
+                                <p>جرب أن تكتب: <code>"أنشئ صفحة HTML مع Bootstrap"</code></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ai-chat-input">
+                        <input type="text" id="ai-chat-input" 
+                               placeholder="اكتب طلبك للمساعد الذكي...">
+                        <button id="send-ai-message">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Live Preview -->
+                <div class="preview-container">
+                    <div class="preview-header">
+                        <h3><i class="fas fa-eye"></i> المعاينة الحية</h3>
+                        <div class="preview-actions">
+                            <button class="preview-btn" id="refresh-preview">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <select class="device-selector" id="device-selector">
+                                <option value="desktop">🖥️ سطح المكتب</option>
+                                <option value="tablet">📱 لوحي</option>
+                                <option value="mobile">📱 جوال</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="preview-frame-container">
+                        <iframe id="live-preview" class="preview-frame" 
+                                sandbox="allow-scripts allow-same-origin"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Status Bar -->
+        <footer class="status-bar">
+            <div class="status-left">
+                <span class="status-item">
+                    <i class="fas fa-code-branch"></i> main
+                </span>
+                <span class="status-item">
+                    <i class="fas fa-file-code"></i> HTML
+                </span>
+                <span class="status-item">
+                    <i class="fas fa-keyboard"></i> UTF-8
+                </span>
+            </div>
+            <div class="status-right">
+                <span class="status-item" id="line-info">
+                    <i class="fas fa-align-left"></i> سطر 1، عمود 1
+                </span>
+                <span class="status-item">
+                    <i class="fas fa-memory"></i> 128MB
+                </span>
+                <span class="status-item" id="connection-status">
+                    <i class="fas fa-wifi" style="color: #10b981;"></i> متصل
+                </span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Monaco Editor Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+    <script src="platform.js"></script>
+</body>
+</html>
