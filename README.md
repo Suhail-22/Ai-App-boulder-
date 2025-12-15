@@ -32,6 +32,7 @@
 4. انقر على "Deploy"
 
 ### النشر المحلي:
+
 ```bash
 # استنساخ المشروع
 git clone https://github.com/yourusername/bolt-ai.git
