@@ -1,0 +1,55 @@
+<!-- أضف هذا بعد platform-header في platform.html -->
+<div class="top-toolbar">
+    <div class="bolt-logo">
+        <i class="fas fa-bolt"></i>
+        <span>bolt.ai</span>
+    </div>
+    
+    <div class="toolbar-group">
+        <button class="toolbar-btn active" data-action="html">
+            <i class="fab fa-html5"></i> HTML
+        </button>
+        <button class="toolbar-btn" data-action="css">
+            <i class="fab fa-css3-alt"></i> CSS
+        </button>
+        <button class="toolbar-btn" data-action="js">
+            <i class="fab fa-js"></i> JavaScript
+        </button>
+        <button class="toolbar-btn" data-action="react">
+            <i class="fab fa-react"></i> React
+        </button>
+        <button class="toolbar-btn" data-action="vue">
+            <i class="fab fa-vuejs"></i> Vue
+        </button>
+    </div>
+    
+    <div class="toolbar-group">
+        <button class="toolbar-btn" id="toggle-theme">
+            <i class="fas fa-sun"></i> الوضع الفاتح
+        </button>
+        <button class="toolbar-btn" id="export-project">
+            <i class="fas fa-download"></i> تصدير
+        </button>
+        <button class="toolbar-btn" id="share-project">
+            <i class="fas fa-share"></i> مشاركة
+        </button>
+    </div>
+</div>
+
+<div class="quick-actions">
+    <button class="quick-btn" data-template="landing">
+        <i class="fas fa-rocket"></i> صفحة هبوط
+    </button>
+    <button class="quick-btn" data-template="todo">
+        <i class="fas fa-tasks"></i> قائمة مهام
+    </button>
+    <button class="quick-btn" data-template="calculator">
+        <i class="fas fa-calculator"></i> حاسبة
+    </button>
+    <button class="quick-btn" data-template="portfolio">
+        <i class="fas fa-user-tie"></i> موقع شخصي
+    </button>
+    <button class="quick-btn" data-template="dashboard">
+        <i class="fas fa-chart-line"></i> لوحة تحكم
+    </button>
+</div>

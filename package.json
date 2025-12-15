@@ -1,0 +1,48 @@
+{
+  "name": "bolt-ai-studio",
+  "version": "2.0.0",
+  "description": "منصة تطوير التطبيقات بالذكاء الاصطناعي - PWA",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve . -p 3000",
+    "dev": "live-server . --port=3000",
+    "build": "echo 'No build required'",
+    "test": "echo 'No tests specified'",
+    "vercel-build": "echo 'Building for Vercel'",
+    "deploy": "vercel --prod",
+    "generate-icons": "node scripts/generate-icons.js",
+    "generate-sw": "workbox generateSW workbox-config.js",
+    "update": "npm run generate-icons && npm run generate-sw"
+  },
+  "keywords": [
+    "ai",
+    "development",
+    "pwa",
+    "code-editor",
+    "arabic",
+    "vercel"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "monaco-editor": "^0.44.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1",
+    "live-server": "^1.2.2",
+    "vercel": "^33.0.1",
+    "workbox-cli": "^7.0.0",
+    "sharp": "^0.32.6"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/bolt-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/bolt-ai/issues"
+  },
+  "homepage": "https://bolt-ai.vercel.app"
+}
